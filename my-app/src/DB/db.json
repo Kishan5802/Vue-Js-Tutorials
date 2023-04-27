@@ -1,0 +1,32 @@
+{
+  "users": [
+    {
+      "firstname": "Vipul",
+      "lastname": "Maheta",
+      "email": "nbfcadmin@ssbi.in",
+      "pwd": "123456",
+      "id": 1
+    },
+    {
+      "firstname": "Tarak",
+      "lastname": "Maheta",
+      "email": "bankuser@ssbi.in",
+      "pwd": "123",
+      "id": 2
+    },
+    {
+      "firstname": "Rita",
+      "lastname": "Khurana",
+      "email": "kishanchh@gmail.com",
+      "pwd": "123q",
+      "id": 3
+    },
+    {
+      "firstname": "Kanya",
+      "lastname": "Kumari",
+      "email": "kanya@gmail.com",
+      "pwd": "Kanya@123",
+      "id": 4
+    }
+  ]
+}
