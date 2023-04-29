@@ -1,25 +1,62 @@
 <template>
 <div class="container">
-  <div class="header-container">
+  <!-- <div class="header-container">
     <h3>Login Form</h3>
-  </div>
+  </div> -->
   <div class="content-container">
     <Card class="card-container">
       <template #content>
+        <div class="header-container">
+          <h3>Login Form</h3>
+        </div>
 
         <form class="form-container">
-          <div class="card flex em">
-            <label class="text-left">Email</label><br />
-            <span class="p-input-icon-left">
-              <i class="pi pi-user" />
-              <!-- <InputText v-model="value1" placeholder="Search" /> -->
-              <InputText id="email" aria-describedby="email-help" />
-            </span>
-          </div><br />
-          <div class="card flex ps">
-            <label>Password</label><br />
-            <InputText id="pwd" toggleMask aria-describedby="pwd-help" />
-            <!-- <Password id="password" /> -->
+          <div>
+            <div class="card flex em">
+              <label class="text-left">Email</label><br />
+              <span class="p-input-icon-left">
+                <i class="pi pi-user" />
+                <!-- <InputText v-model="value1" placeholder="Search" /> -->
+                <InputText id="email" aria-describedby="email-help" placeholder="Type your email" />
+              </span>
+            </div><br />
+            <div class="card flex ps">
+              <label>Password</label><br />
+              <span class="p-input-icon-left">
+                <i class="pi pi-lock" />
+                <InputText id="pwd" toggleMask aria-describedby="pwd-help" placeholder="Type your password" />
+              </span>
+              <!-- <Password id="password" /> -->
+            </div>
+            <div class="card flex justify-content-center-sm forpass">
+              <Button label="Forgot Password" link @click="onForgotPassword" />
+            </div> <br />
+            <div class="card flex justify-content-center-sm">
+              <Button label="Login" />
+            </div> <br />
+            <div class="">
+              Or Sign Up Using
+              <div>
+                <span class="p-input-icon">
+                  <Button label="Forgot Password" link>
+                    <i class="pi pi-google" style="font-size: 1.5rem" />
+                  </Button>
+                </span>
+                <span class="p-input-icon">
+                  <Button label="Forgot Password" link>
+                    <i class="pi pi-facebook" style="font-size: 1.5rem" />
+                  </Button>
+                </span>
+                <span class="p-input-icon">
+                  <Button label="Forgot Password" link>
+                    <i class="pi pi-twitter" style="font-size: 1.5rem" />
+                  </Button>
+                </span>
+              </div>
+            </div><br />
+            <div class="card flex justify-content-center-sm">
+              <Button label="Don't have an Account" link @click="onNotHavingAccount" />
+            </div>
           </div>
           <!-- <div class="flex flex-column gap-2 row">
               <label>Email</label>&nbsp;
@@ -29,13 +66,7 @@
               <label>Password</label>&nbsp;
               <InputText id="pwd" toggleMask aria-describedby="pwd-help" />
               <Password id="password" />
-            </div><br /> --><br />
-          <div class="card flex justify-content-center">
-            <Button label="Submit" />
-          </div> <br />
-          <div class="card flex justify-content-center">
-            <Button label="Don't have an Account" link @click="onNotHavingAccount" />
-          </div>
+            </div><br /> <br /> -->
           <!-- <div class="p-chips-token-label">
             <label></label>
             <Chips v-model="form"/>
@@ -67,6 +98,9 @@ export default {
       this.$router.push({
         name: 'SignUpForm'
       });
+    },
+    async onForgotPassword(event) {
+      event.preventDefault();
     }
   }
 }
@@ -77,7 +111,7 @@ export default {
   display: flex;
   justify-content: center;
   margin: auto;
-  width: max-content;
+  width: 50%;
 }
 
 .em {
@@ -89,6 +123,10 @@ export default {
 }
 
 .pi-search {
-  color:white;
+  color: white;
+}
+
+.forpass {
+  text-align: right;
 }
 </style>
