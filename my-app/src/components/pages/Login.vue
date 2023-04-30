@@ -4,58 +4,58 @@
     <h3>Login Form</h3>
   </div> -->
   <div class="content-container">
-    <Card class="card-container">
+    <Card class="card-container" >
       <template #content>
         <div class="header-container">
           <h3>Login Form</h3>
         </div>
 
-        <form class="form-container">
-          <div>
+        <form class="form-container" style="width: 400px;">
+          <div class="form-content-container">
             <div class="card flex em">
-              <label class="text-left">Email</label><br />
-              <span class="p-input-icon-left">
+              <label style="display: inline-block;text-align: left;width: 280px;">Email</label><br />
+              <span class="p-input-icon-left text-center">
                 <i class="pi pi-user" />
                 <!-- <InputText v-model="value1" placeholder="Search" /> -->
                 <InputText id="email" aria-describedby="email-help" placeholder="Type your email" />
               </span>
             </div><br />
             <div class="card flex ps">
-              <label>Password</label><br />
+              <label style="display: inline-block;text-align: left;width: 280px;">Password</label><br />
               <span class="p-input-icon-left">
                 <i class="pi pi-lock" />
                 <InputText id="pwd" toggleMask aria-describedby="pwd-help" placeholder="Type your password" />
               </span>
               <!-- <Password id="password" /> -->
             </div>
-            <div class="card flex justify-content-center-sm forpass">
-              <Button label="Forgot Password" link @click="onForgotPassword" />
+            <div class="card flex justify-content-center-sm forpass" style="display: inline-block;text-align: right;width: 280px;">
+              <Button label="Forgot Password?" link @click="onForgotPassword" />
             </div> <br />
             <div class="card flex justify-content-center-sm">
-              <Button label="Login" />
-            </div> <br />
-            <div class="">
+              <Button label="Login" id="btnlogin" />
+            </div> <br /><br />
+            <div>
               Or Sign Up Using
               <div>
                 <span class="p-input-icon">
-                  <Button label="Forgot Password" link>
+                  <Button link id="btngoogle">
                     <i class="pi pi-google" style="font-size: 1.5rem" />
                   </Button>
                 </span>
                 <span class="p-input-icon">
-                  <Button label="Forgot Password" link>
+                  <Button link id="btnfacebook">
                     <i class="pi pi-facebook" style="font-size: 1.5rem" />
                   </Button>
                 </span>
                 <span class="p-input-icon">
-                  <Button label="Forgot Password" link>
+                  <Button link id="btntwitter">
                     <i class="pi pi-twitter" style="font-size: 1.5rem" />
                   </Button>
                 </span>
               </div>
             </div><br />
             <div class="card flex justify-content-center-sm">
-              <Button label="Don't have an Account" link @click="onNotHavingAccount" />
+              <Button label="Don't have an Account?" link id="btndontacc" @click="onNotHavingAccount" />
             </div>
           </div>
           <!-- <div class="flex flex-column gap-2 row">
@@ -109,24 +109,33 @@ export default {
 <style>
 .card-container {
   display: flex;
-  justify-content: center;
   margin: auto;
-  width: 50%;
+  width: 100%;
 }
 
-.em {
-  text-align: left;
+.content-container {
+  display: inline-block;
 }
 
-.ps {
-  text-align: left;
+.form-content-container {
+  justify-content: center;
 }
 
-.pi-search {
-  color: white;
+
+#email {
+  width: 280px;
 }
 
-.forpass {
-  text-align: right;
+#btnlogin {
+  margin-top: 15px;
+  width: 280px;
+}
+
+#pwd {
+  width: 280px;
+}
+
+.sus div {
+  margin-top: 15px;
 }
 </style>
