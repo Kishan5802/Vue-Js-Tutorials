@@ -1,96 +1,139 @@
 <template>
-  <div class="container">
-    <div class="header-container">
-      <h3>Registration Form</h3>
-    </div>
-    <div class="content-container">
-      <form class="form-container">
-        <div class="flex flex-column gap-2">
-          <label for="firstname">Firstname</label>&nbsp;
-          <InputText id="firstname" v-model="form.firstname" aria-describedby="firstname-help" />
-        </div><br />
-        <div class="flex flex-column gap-2">
-          <label for="lastname">Lastname</label>&nbsp;
-          <InputText id="lastname" v-model="form.lastname" aria-describedby="lastname-help" />
-        </div><br />
-        <div class="flex flex-column gap-2">
-          <label for="email">Email</label>&nbsp;
-          <InputText id="email" v-model="form.email" aria-describedby="email-help" />
-        </div><br />
-        <div class="card flex justify-content-center">
-          <label for="password">Password</label>&nbsp;
-          <Password toggleMask id="password" v-model="form.pwd" />
-        </div><br />
-        <!-- <div class="flex flex-column gap-2">
-          <label for="password">Password</label>&nbsp;
-          <InputText id="password" v-model="form.pwd" aria-describedby="password-help" />
-        </div><br /> -->
-        <div class="card flex justify-content-center">
-          <Button label="Submit" @click="onSubmit" />
-        </div> <br /><br />
-        <div class="card flex justify-content-center">
-          <Button label="Already have an Account" link @click="onAlreadySignup"/>
-        </div>
-        <!-- <div class="p-chips-token-label">
-        <label></label>
-        <Chips v-model="form"/>
-      </div> -->
-      </form>
-    </div>
+<div class="container">
+  <div class="content-container">
+    <Card class="card-container">
+      <template #content>
+        <form class="form-container">
+          <div class="form-content-container">
+            <div class="card flex em">
+              <label class="labels firstname-label">Firstname</label><br />
+              <span class="p-input-icon-left text-center">
+                <i class="pi pi-user" />
+                <!-- <InputText v-model="value1" placeholder="Search" /> -->
+                <InputText id="firstname" aria-describedby="firstname-help" placeholder="Type your Firstname" />
+              </span>
+            </div><br />
+            <div class="card flex em">
+              <label class="labels lastname-label">Lastname</label><br />
+              <span class="p-input-icon-left text-center">
+                <i class="pi pi-user" />
+                <!-- <InputText v-model="value1" placeholder="Search" /> -->
+                <InputText id="lastname" aria-describedby="lastname-help" placeholder="Type your Lastname" />
+              </span>
+            </div><br />
+            <div class="card flex em">
+              <label class="labels username-label">Username</label><br />
+              <span class="p-input-icon-left text-center">
+                <i class="pi pi-user" />
+                <!-- <InputText v-model="value1" placeholder="Search" /> -->
+                <InputText id="username" aria-describedby="username-help" placeholder="Type your Username" />
+              </span>
+            </div><br />
+            <div class="card flex em">
+              <label class="labels email-label">Email</label><br />
+              <span class="p-input-icon-left text-center">
+                <i class="pi pi-envelope" />
+                <!-- <InputText v-model="value1" placeholder="Search" /> -->
+                <InputText id="email" aria-describedby="email-help" placeholder="Type your email" />
+              </span>
+            </div><br />
+            <div class="card flex ps">
+              <label class="labels password-label">Password</label><br />
+              <span class="p-input-icon">
+                <span class="p-input-icon-left">
+                  <i class="pi pi-lock" />
+                  <InputText :type="inputType" placeholder="Enter password" style="padding-right: 35px;" />
+                </span>
+              </span>
+              <span class="p-input-icon-right" style="display: inline-block;margin-bottom: 5px;">
+                <i class="pi" :class="[inputType==='text' ? 'pi-eye' : 'pi-eye-slash']" @click="togglePassword" />
+              </span>
+              <!-- <Password id="password" /> -->
+            </div>
+            <div class="card flex justify-content-center-sm">
+              <Button label="Login" id="btnsignup" />
+            </div> <br /><br />
+            <div class="card flex justify-content-center-sm">
+              <Button label="Already have an account" link id="btnhaveacc" @click="onNotHavingAccount" />
+            </div>
+          </div>
+        </form>
+      </template>
+    </Card>
   </div>
+</div>
 </template>
 
 <script>
+import Card from 'primevue/card';
 import InputText from 'primevue/inputtext';
-import Password from 'primevue/password';
+// import Password from 'primevue/password';
 import Button from 'primevue/button';
-import axios from 'axios'
+// import axios from 'axios'
 // import { ref } from "vue";
 export default {
   name: 'SignUpForm',
   components: {
     Button,
     InputText,
-    Password,
+    // Password,
+    Card,
   },
   data() {
     return {
-      // form: ref(),
-      form: {
-        firstname: '',
-        lastname: '',
-        email: '',
-        pwd: ''
-      },
+      // password: '',
+      inputType: 'password',
+      showPassword: false
     }
   },
   methods: {
-    async onSubmit(event) {
-      event.preventDefault();
-      console.log(this.form);
-      let result = await axios.post('http://localhost:3000/users', this.form);
-      if (result.status === 201) {
-        alert('Submitted successfully');
-        this.form.firstname = ''
-        this.form.lastname = ''
-        this.form.email = ''
-        this.form.pwd = ''
-        this.$router.push({name: 'Login'});
-        
+    togglePassword() {
+      if (this.inputType === 'password') {
+        this.inputType = 'text';
       } else {
-        console.log('Error');
+        this.inputType = 'password';
       }
-    },
-    async onAlreadySignup(event) {
-      event.preventDefault();
-      this.$router.push({name: 'Login'});
     }
   }
 }
 </script>
 
 <style>
-.container {
+.card-container {
+  display: flex;
+  margin: auto;
+}
+
+.content-container {
+  display: flex;
   text-align: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.form-container {
+  width: 400px;
+}
+
+.form-content-container {
+  justify-content: center;
+}
+
+.labels {
+  width: 280px;
+  display: inline-block;
+  text-align: left;
+}
+
+#btnsignup {
+  margin-top: 15px;
+  width: 280px;
 }
 </style>

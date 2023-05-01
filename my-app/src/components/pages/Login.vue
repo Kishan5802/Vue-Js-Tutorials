@@ -58,19 +58,6 @@
               <Button label="Don't have an Account?" link id="btndontacc" @click="onNotHavingAccount" />
             </div>
           </div>
-          <!-- <div class="flex flex-column gap-2 row">
-              <label>Email</label>&nbsp;
-              <InputText id="email" aria-describedby="email-help" />
-            </div><br />
-            <div class="card flex justify-content-center">
-              <label>Password</label>&nbsp;
-              <InputText id="pwd" toggleMask aria-describedby="pwd-help" />
-              <Password id="password" />
-            </div><br /> <br /> -->
-          <!-- <div class="p-chips-token-label">
-            <label></label>
-            <Chips v-model="form"/>
-          </div> -->
         </form>
       </template>
     </Card>
@@ -114,6 +101,7 @@ export default {
 }
 
 .content-container {
+  height: 100vh;
   display: inline-block;
 }
 
