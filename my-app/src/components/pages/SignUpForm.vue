@@ -5,7 +5,7 @@
       <template #content>
         <form class="form-container">
           <div class="form-content-container">
-            <div class="card flex em">
+            <div class="card flex">
               <label class="labels firstname-label">Firstname</label><br />
               <span class="p-input-icon-left text-center">
                 <i class="pi pi-user" />
@@ -35,6 +35,13 @@
                 <i class="pi pi-envelope" />
                 <!-- <InputText v-model="value1" placeholder="Search" /> -->
                 <InputText id="email" aria-describedby="email-help" placeholder="Type your email" />
+              </span>
+            </div><br />
+            <div class="card flex mn">
+              <label class="labels mobiles-label">Mobile Number</label>
+              <span class="p-input-icon-left text-center">
+                <i class="pi pi-user" />
+                <InputText id="phones" aria-describedby="phone-help" placeholder="Type your Phone Number" style="width: 280px;"/>
               </span>
             </div><br />
             <div class="card flex ps">
