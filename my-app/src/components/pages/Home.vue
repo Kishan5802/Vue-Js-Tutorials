@@ -63,4 +63,10 @@ export default {
 .p-menubar {
   justify-content: flex-end;
 }
+
+.content-container {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
 </style>

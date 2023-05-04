@@ -1,5 +1,5 @@
 <template>
-<div class="container">
+<div class="container main-container">
   <!-- <div class="header-container">
     <h3>Login Form</h3>
   </div> -->
@@ -15,16 +15,16 @@
             <div class="card flex em">
               <label style="display: inline-block;text-align: left;width: 280px;">Email</label><br />
               <span class="p-input-icon-left text-center">
-                <i class="pi pi-user" />
+                <i class="pi pi-envelope" />
                 <!-- <InputText v-model="value1" placeholder="Search" /> -->
-                <InputText id="email" aria-describedby="email-help" placeholder="Type your email" />
+                <InputText id="email" aria-describedby="email-help" placeholder="Type your email" v-model="email"/>
               </span>
             </div><br />
             <div class="card flex ps">
               <label style="display: inline-block;text-align: left;width: 280px;">Password</label><br />
               <span class="p-input-icon-left">
                 <i class="pi pi-lock" />
-                <InputText id="pwd" toggleMask aria-describedby="pwd-help" placeholder="Type your password" />
+                <InputText id="pwd" toggleMask aria-describedby="pwd-help" placeholder="Type your password" v-model="password"/>
               </span>
               <!-- <Password id="password" /> -->
             </div>
@@ -32,7 +32,7 @@
               <Button label="Forgot Password?" link @click="onForgotPassword" />
             </div> <br />
             <div class="card flex justify-content-center-sm">
-              <Button label="Login" id="btnlogin" />
+              <Button label="Login" id="btnlogin" v-on:submit="onLogin"/>
             </div> <br /><br />
             <div>
               Or Sign Up Using
@@ -79,6 +79,12 @@ export default {
     Card,
     // Password,
   },
+  data() {
+    return {
+      email: '',
+      password: ''
+    }
+  },
   methods: {
     async onNotHavingAccount(event) {
       event.preventDefault();
@@ -88,6 +94,9 @@ export default {
     },
     async onForgotPassword(event) {
       event.preventDefault();
+    },
+    async onLogin() {
+
     }
   }
 }
@@ -101,7 +110,7 @@ export default {
 }
 
 .content-container {
-  height: 100vh;
+  /* height: 100vh; */
   display: inline-block;
 }
 
@@ -109,6 +118,12 @@ export default {
   justify-content: center;
 }
 
+.main-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
 
 #email {
   width: 280px;
