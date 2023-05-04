@@ -14,7 +14,7 @@ const port = 5005;
 
 app.post('/addUser', async (req, res) => {
   console.log(req.body.form);
-  const data  = req.body.form;
+  const data = req.body.form;
   UserDetails.insertMany(data).then((response) => {
     res.send({
       status: 200,
@@ -26,6 +26,19 @@ app.post('/addUser', async (req, res) => {
 });
 
 app.post('/userAuthenticate', async (req, res) => {
-  UserDetails.find({"email":req.body.email},{"password":req.body.password});
+  // console.log(req.body.email, req.body.password);
+  UserDetails.find({ "email": req.body.email }, { "password": req.body.password })
+    .then((response) => {
+      res.send({
+        status: 200,
+        message: response.data
+      });
+    })
+    .catch((err) => {
+      res.send({
+        status: 500,
+        message: err
+      });
+    });
 });
 app.listen(port, () => console.log(`Rest API is listening on port ${port}!`));

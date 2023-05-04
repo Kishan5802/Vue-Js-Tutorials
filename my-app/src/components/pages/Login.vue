@@ -4,7 +4,7 @@
     <h3>Login Form</h3>
   </div> -->
   <div class="content-container">
-    <Card class="card-container" >
+    <Card class="card-container">
       <template #content>
         <div class="header-container">
           <h3>Login Form</h3>
@@ -17,14 +17,14 @@
               <span class="p-input-icon-left text-center">
                 <i class="pi pi-envelope" />
                 <!-- <InputText v-model="value1" placeholder="Search" /> -->
-                <InputText id="email" aria-describedby="email-help" placeholder="Type your email" v-model="email"/>
+                <InputText id="email" aria-describedby="email-help" placeholder="Type your email" v-model="email" />
               </span>
             </div><br />
             <div class="card flex ps">
               <label style="display: inline-block;text-align: left;width: 280px;">Password</label><br />
               <span class="p-input-icon-left">
                 <i class="pi pi-lock" />
-                <InputText id="pwd" toggleMask aria-describedby="pwd-help" placeholder="Type your password" v-model="password"/>
+                <InputText id="pwd" :type="inputType" aria-describedby="pwd-help" placeholder="Type your password" v-model="password" />
               </span>
               <!-- <Password id="password" /> -->
             </div>
@@ -32,7 +32,7 @@
               <Button label="Forgot Password?" link @click="onForgotPassword" />
             </div> <br />
             <div class="card flex justify-content-center-sm">
-              <Button label="Login" id="btnlogin" v-on:submit="onLogin"/>
+              <Button label="Login" id="btnlogin" @click="onLogin" />
             </div> <br /><br />
             <div>
               Or Sign Up Using
@@ -66,6 +66,7 @@
 </template>
 
 <script>
+import axios from 'axios';
 import InputText from 'primevue/inputtext';
 import Button from 'primevue/button';
 import Card from 'primevue/card';
@@ -82,10 +83,16 @@ export default {
   data() {
     return {
       email: '',
-      password: ''
+      password: '',
+      inputType: 'password'
     }
   },
   methods: {
+    togglePassword() {
+      if (this.inputType === 'text') {
+        this.inputType = 'password';
+      }
+    },
     async onNotHavingAccount(event) {
       event.preventDefault();
       this.$router.push({
@@ -96,7 +103,26 @@ export default {
       event.preventDefault();
     },
     async onLogin() {
-
+      try {
+        // console.log(this.password);
+        let result = await axios.post('http://localhost:5005/userAuthenticate', {
+          email: this.email,
+          password: this.password
+        });
+        console.log(result);
+        if (result.data.status === 200) {
+          console.log(result.data);
+          this.$router.push({
+            name: 'Home'
+          });
+        } else {
+          console.log(result.data.err);
+          alert('Error');
+        }
+      } catch (err) {
+        console.log(err);
+        alert('Error');
+      }
     }
   }
 }
