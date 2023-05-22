@@ -136,7 +136,7 @@ export default {
 }
 
 .content-container {
-  /* height: 100vh; */
+  height: 100vh;
   display: inline-block;
 }
 

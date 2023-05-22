@@ -35,7 +35,7 @@ const userDetails = new mongoose.Schema({
   },
   isDeleted: {
     type: Boolean,
-    default: true
+    default: false
   },
   timeStamp: {
     type: Date,

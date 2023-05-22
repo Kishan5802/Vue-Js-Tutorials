@@ -9,6 +9,7 @@
     </div>
     <div class="content-container">
       <h4>Home Page</h4>
+      
     </div>
   </div>
 </template>

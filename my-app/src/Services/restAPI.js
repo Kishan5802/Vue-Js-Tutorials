@@ -13,7 +13,7 @@ const port = 5005;
 
 
 app.post('/addUser', async (req, res) => {
-  console.log(req.body.form);
+  // console.log(req.body.form);
   const data = req.body.form;
   UserDetails.insertMany(data).then((response) => {
     res.send({
@@ -37,7 +37,7 @@ app.post('/userAuthenticate', async (req, res) => {
     .catch((err) => {
       res.send({
         status: 500,
-        message: err
+        message: err.message
       });
     });
 });
